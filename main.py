@@ -1,11 +1,17 @@
 from selenium import webdriver
+import time
 
-def launchBrowser():
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option("detach", True)
-    web_driver = webdriver.Chrome(options=options)
+options = webdriver.ChromeOptions()
+options.add_experimental_option("detach", True)
+driver = webdriver.Chrome(options=options)
 
-    web_driver.get("https://www.saucedemo.com/")
-    web_driver.implicitly_wait(30) 
+driver.get("https://www.saucedemo.com/")
+# driver.implicitly_wait(3) 
 
-launchBrowser()
+# login_button = driver.find_element_by_id('login-button')
+login_button = driver.find_element("id", 'login-button')
+login_button.click()
+
+time.sleep(2)
+
+driver.close()
